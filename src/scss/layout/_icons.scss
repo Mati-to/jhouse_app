@@ -1,0 +1,19 @@
+@include tablet {
+	.icons-aboutus {
+    @include grid(3, 5rem)
+	}
+}
+
+.icon {
+	text-align: center;
+
+	img {
+		height: 7.5rem;
+	}
+	h3 {
+		text-transform: uppercase;
+	}
+  p {
+    font-size: 1.8rem;
+  }
+}
