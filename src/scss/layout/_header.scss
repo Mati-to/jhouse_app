@@ -1,4 +1,49 @@
+.main {
+	background-image: url('../../src/img/header2.jpg');
+}
+
+.logo {
+	max-width: 160px;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+
+  &:hover {
+    color: $brown;
+    border: 1px solid $brown;
+    padding: 5px;
+  }
+}
+
 .header {
-  background-color: $darkGray;
-  padding: 1rem 0 3rem 0;
+	background-color: $darkGray;
+	padding: 1rem 0 3rem 0;
+	color: $white;
+
+	&.main {
+		background-position: center center;
+		background-size: cover;
+
+		@include tablet {
+			min-height: 50rem;
+		}
+
+		.header-container {
+			@include tablet {
+				height: 45rem;
+			}
+		}
+	}
+}
+
+.header-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	h1 {
+		text-align: left;
+		font-weight: 600;
+		max-width: 50rem;
+		line-height: 4rem;
+	}
 }
