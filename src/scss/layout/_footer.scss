@@ -1,0 +1,14 @@
+.footer {
+  background-color: $darkGray;
+  padding: calc($gap / 2) 0;
+
+  .footer-container {
+    padding: calc($gap / 2);
+  }
+
+  .copyright {
+    color: $white;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}

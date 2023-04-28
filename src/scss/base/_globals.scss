@@ -11,6 +11,7 @@ body {
     line-height: 1.8;
 }
 p {
+    font-family: $text_font;
     color: $black;
     font-size: 2rem;
 }
@@ -39,14 +40,14 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 3.8rem;
+    font-size: 3.5rem;
 }
 h2 {
-    font-size: 3.4rem;
+    font-size: 3.1rem;
 }
 h3 {
-    font-size: 3rem;
+    font-size: 2.8rem;
 }
 h4 {
-    font-size: 2.6rem;
+    font-size: 2.3rem;
 }
