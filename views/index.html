@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../build/css/app.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <title>NihonStay - Proyect </title>
 </head>
 
@@ -24,7 +25,7 @@
 
       </div> <!-- Bar -->
 
-      <h1>Vacational House Rent in Japan</h1>
+      <h1 class='animate__animated animate__fadeInx'>Vacational House Rent in Japan</h1>
     </div>
   </header>
 
@@ -138,6 +139,73 @@
     </div>
   </section>
 
+  <section class='contact-mainpage'>
+    <h3>Experience the authentic beauty of Japan, in the comfort of your own private retreat.</h3>
+    <a class='button brown-button' href="contact.html">Contact Us!</a>
+  </section>
+
+  <div class='container section blog-mainpage'>
+    <section class='blog'>
+      <h3>Blog - Places of interest</h3>
+
+      <div class='blog-entry'>
+        <div class='blog-img'>
+          <img src="../src/img/blog1_bamboo-grove.jpg" alt="Bamboo grove">
+        </div>
+        <div class='blog-text'>
+          <a href="blogentry.html">
+            <h4>Arashiyama's Bamboo Grove</h4>
+            <p>Location: <span>Arashiyama, Kyoto</span> </p>
+            <p>The Arashiyama Bamboo Grove is a popular destination for nature lovers and photographers.</p>
+          </a>
+        </div>
+      </div> <!-- Article 1 end -->
+
+      <div class='blog-entry'>
+        <div class='blog-img'>
+          <img src="../src/img/blog2_nezu-shrine.jpg" alt="Fushimi inari taisha temple">
+        </div>
+        <div class='blog-text'>
+          <a href="blogentry.html">
+            <h4>Fushimi Inari Taisha</h4>
+            <p>Location: <span>Bunkyo, Tokyo</span></p>
+            <p>Nezu Shrine is a Shinto shrine located in the Bunkyo ward of Tokyo. great place to
+              experience Japanese culture and history</p>
+          </a>
+        </div>
+      </div> <!-- Article 2 end -->
+    </section>
+
+    <section class='container blog-weather'>
+      <h3>Japan's weather</h3>
+
+      <div class='container weather-box'>
+        <img src="" alt="">
+        <p class="temperature"></p>
+        <p class="description"></p>
+      </div>
+
+      <div class='weather-description'>
+        <div class='humidity-box'>
+          <p>Humidity</p>
+          <img src="../src/img/humidity-icon.png" alt="">
+          <span></span>
+        </div>
+        <div class='wind-box'>
+          <p>Wind</p>
+          <img src="../src/img/wind-icon.svg" alt="">
+          <span></span>
+        </div>
+
+      </div>
+
+      <div class='weather-notFound'>
+        <img src="../src/img/maintenance.svg" alt="maintenance section">
+        <p>This section is under maintenance</p>
+      </div>
+    </section>
+  </div>
+
   <footer class='footer section'>
     <div class="container footer-container">
       <nav class='navbar'>
@@ -152,6 +220,7 @@
   </footer>
 
 
+  <script src='../src/js/weather.js'></script>
   <script src='../src/js/app.js'></script>
 </body>
 
