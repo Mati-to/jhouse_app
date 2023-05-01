@@ -1,0 +1,6 @@
+.aboutUs-container {
+
+  @include tablet {
+    @include grid(2, 2rem)
+  }
+}
