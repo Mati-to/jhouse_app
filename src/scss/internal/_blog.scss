@@ -1,0 +1,21 @@
+.thanks-to {
+  display: flex;
+
+  @include tablet {
+    display: flex;
+
+  }
+
+  .photo-box {
+    width: 50%;
+    text-align: center;
+  }
+  p {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  a {
+    color: $yellow;
+    
+  }
+}
