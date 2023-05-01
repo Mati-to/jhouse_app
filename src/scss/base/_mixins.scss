@@ -32,6 +32,8 @@
     margin-top: calc($gap / 2);
     transition: all 0.1s;
     border-radius: 10px;
+    border: none;
+    cursor: pointer;
 
     &:hover {
         background-color: darken($bgColor, 10);
