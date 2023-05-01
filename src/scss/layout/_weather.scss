@@ -1,0 +1,80 @@
+.blog-weather {
+	border: 1px solid $weather;
+	color: $weather;
+	border-radius: 20px;
+	background-color: $weatherBg;
+	margin-top: 50px;
+	box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.596);
+
+	@include tablet {
+		margin-top: 0;
+	}
+
+	img {
+		width: 12rem;
+	}
+}
+
+.weather-box {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: -10px;
+
+	.temperature {
+		color: $weather;
+		font-size: 4rem;
+		font-weight: $bold;
+		margin: 0;
+	}
+	.description {
+		color: $weather;
+		font-size: 2rem;
+		text-transform: capitalize;
+		margin: 0;
+	}
+}
+
+.weather-description {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 30px;
+	flex-wrap: wrap;
+
+	p,
+	span {
+		font-family: $text_font;
+		color: $weather;
+		font-size: 1.6rem;
+	}
+	img {
+		width: 3rem;
+	}
+
+	.humidity-box,
+	.wind-box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 7px;
+	}
+}
+
+.weather-notFound {
+	width: 100%;
+	text-align: center;
+	margin-top: 50px;
+	scale: 0;
+	opacity: 0;
+	display: none;
+
+	img {
+		width: 70%;
+	}
+	p {
+		color: $weather;
+		font-size: 2rem;
+		margin-top: 12px;
+	}
+}

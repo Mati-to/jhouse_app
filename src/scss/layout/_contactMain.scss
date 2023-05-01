@@ -1,0 +1,17 @@
+.contact-mainpage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: url('../../src/img/contact1.jpg');
+	background-position: center center;
+	background-size: cover;
+	padding: $gap 0;
+
+	h3 {
+    color: $white;
+    font-weight: 500;
+    max-width: 80rem;
+    margin: 40px 30px 10px 30px;
+		text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+	}
+}
