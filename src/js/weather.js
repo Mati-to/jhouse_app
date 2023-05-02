@@ -13,8 +13,6 @@ async function getWeatherDay() {
     const response = await fetch(weatherAPI);
     const dataDay = await response.json();
 
-    console.log(dataDay)
-
     error.style.display = 'none';
     error.classList.remove('animate__animated', 'animate__fadeIn');
 
@@ -47,13 +45,10 @@ async function getWeatherDay() {
     weatherDetails.classList.add('animate__animated', 'animated__fadeIn');
 
   } catch (err) {
-    if (dataDay.cod === 404) {
-      weatherBox.style.display = 'none';
-      weatherDetails.style.details = 'none';
-      error.style.display = 'block';
-      error.classList.add('animate__animated', 'animate__fadeIn');
-      return;
-    }
+    weatherBox.style.display = 'none';
+    weatherDetails.style.details = 'none';
+    error.style.display = 'block';
+    error.classList.add('animate__animated', 'animate__fadeIn');
   }
 }
 

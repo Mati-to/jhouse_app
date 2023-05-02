@@ -2,9 +2,9 @@
 	width: 80%;
 	margin: 0 auto;
 
-  fieldset {
-    margin-top: 2rem;
-  }
+	fieldset {
+		margin-top: 2rem;
+	}
 
 	p {
 		font-size: 1.4rem;
@@ -31,12 +31,18 @@
 		width: 100%;
 		border-radius: 5px;
 		border: 1px solid $gray;
+		margin-bottom: 1.5rem;
 	}
 
-  .contact-form {
-     max-width: 30rem;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-  }
+	.contact-form {
+		max-width: 30rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+#phone-contact,
+#email-contact {
+	margin: 0;
 }
