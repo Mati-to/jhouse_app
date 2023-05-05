@@ -6,3 +6,14 @@
 .green-button {
   @include button($green, $white);
 }
+
+.red-button-block {
+  display: block;
+  width: 50%;
+  @include button($red, $white)
+}
+.green-button-block {
+  display: block;
+  width: 50%;
+  @include button($green, $white)
+}
