@@ -6,8 +6,8 @@ addTemplate('header');
 <main class='container section'>
   <h1>Who are we?</h1>
 
-  <div class="aboutUs-container">
-    <div class="aboutUs-text">
+  <div class='aboutUs-container'>
+    <div class='aboutUs-text'>
       <h4>Welcome to NihonStay!</h4>
       <p> We are a team of travel enthusiasts who are passionate about providing the best vacation rental experiences
         for visitors to Japan. Our goal is to help you find the perfect home away from home during your stay in this
@@ -22,8 +22,8 @@ addTemplate('header');
       <p>Thank you for considering Japan Vacation Homes for your next trip to Japan. We look forward to helping you
         make unforgettable memories in this amazing country! </p>
     </div>
-    <div class="image">
-      <img src="../src/img/aboutus1.jpg" alt="" loading='lazy'>
+    <div class='image'>
+      <img src='../src/img/aboutus1.jpg' alt='' loading='lazy'>
     </div>
   </div>
 </main>

@@ -1,6 +1,8 @@
 <?php
-include './templates/header.php';
+require '../includes/functions.php';
+addTemplate('header');
 ?>
+
 
 <main class='container section'>
   <h1>NihonStay's Blog</h1>
@@ -76,40 +78,40 @@ include './templates/header.php';
 <h3>Special thanks to these photographers:</h3>
 <section class='container thanks-to'>
   <div class='photo-box'>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/@filizelaerts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Filiz
-        Elaerts</a> in <a target='_blank' href="https://unsplash.com/es/fotos/58ApUELd3Ec?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/@filizelaerts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Filiz
+        Elaerts</a> in <a target='_blank' href='https://unsplash.com/es/fotos/58ApUELd3Ec?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/@pepe_nero?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">pepe
-        nero</a> in <a target='_blank' href="https://unsplash.com/es/fotos/JsSM2T9iPRU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/@pepe_nero?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>pepe
+        nero</a> in <a target='_blank' href='https://unsplash.com/es/fotos/JsSM2T9iPRU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/@davidemrich?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">David
-        Emrich</a> in <a target='_blank' href="https://unsplash.com/es/fotos/9a0S_8bU0lo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/@davidemrich?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>David
+        Emrich</a> in <a target='_blank' href='https://unsplash.com/es/fotos/9a0S_8bU0lo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/ja/@shaipal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shai
-        Pal</a> in <a target='_blank' href="https://unsplash.com/es/fotos/LoExSwz2dUI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/ja/@shaipal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Shai
+        Pal</a> in <a target='_blank' href='https://unsplash.com/es/fotos/LoExSwz2dUI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/ja/@susannschuster?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Susann
-        Schuster</a> in <a target='_blank' href="https://unsplash.com/es/fotos/c5yz7Mzfh88?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/ja/@susannschuster?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Susann
+        Schuster</a> in <a target='_blank' href='https://unsplash.com/es/fotos/c5yz7Mzfh88?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/@xiaocongyan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Xiaocong
-        Yan</a> in <a target='_blank' href="https://unsplash.com/es/fotos/M9NTnUlNiEM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/@xiaocongyan?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Xiaocong
+        Yan</a> in <a target='_blank' href='https://unsplash.com/es/fotos/M9NTnUlNiEM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
   </div>
-  <div class="photo-box">
-    <p>Photo by <a target='_blank' href="https://unsplash.com/@cosmingeorgian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cosmin
-        Georgian</a> in <a target='_blank' href="https://unsplash.com/es/fotos/2T9h1sxR5So?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  <div class='photo-box'>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/@cosmingeorgian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Cosmin
+        Georgian</a> in <a target='_blank' href='https://unsplash.com/es/fotos/2T9h1sxR5So?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/@renedeanda?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">René
-        DeAnda</a> in <a target='_blank' href="https://unsplash.com/es/fotos/XvdtpVmYYuU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/@renedeanda?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>René
+        DeAnda</a> in <a target='_blank' href='https://unsplash.com/es/fotos/XvdtpVmYYuU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/@space_face_films?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Luke
-        Galloway</a> in <a target='_blank' href="https://unsplash.com/es/fotos/tuc1Lin_vR8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/@space_face_films?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Luke
+        Galloway</a> in <a target='_blank' href='https://unsplash.com/es/fotos/tuc1Lin_vR8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/pt-br/@tianshu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tianshu
-        Liu</a> in <a target='_blank' href="https://unsplash.com/es/fotos/aqZ3UAjs_M4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/pt-br/@tianshu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Tianshu
+        Liu</a> in <a target='_blank' href='https://unsplash.com/es/fotos/aqZ3UAjs_M4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
-    <p>Photo by <a target='_blank' href="https://unsplash.com/@charlesdeluvio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">charlesdeluvio</a>
-      in <a target='_blank' href="https://unsplash.com/es/fotos/qF1PhG-59pE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+    <p>Photo by <a target='_blank' href='https://unsplash.com/@charlesdeluvio?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>charlesdeluvio</a>
+      in <a target='_blank' href='https://unsplash.com/es/fotos/qF1PhG-59pE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>
     </p>
   </div>
 
