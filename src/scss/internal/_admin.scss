@@ -1,14 +1,40 @@
 .alert {
-
+  padding-left: 10px;
+  opacity: 0.8;
+  font-weight: $bold;
 
   &.error {
-    padding-left: 10px;
     background-color: $pink;
     border-left: 2rem solid $red;
-    opacity: 0.8;
-    font-weight: $bold;
+  }
+  &.success {
+    background-color: $greenLight;
+    border-left: 2rem solid $green;
   }
   &.error:first-of-type {
     margin-top: 20px;
+  }
+}
+
+table.properties {
+  margin-top: 3rem;
+  width: 100%;
+  border-spacing: 0;
+
+  thead {
+    background-color: $darkGray;
+
+    th {
+      color: $white;
+      padding: 0.5rem;
+    }
+  }
+
+  .table-image {
+    width: 10rem;
+  }
+
+  td {
+    text-align: center;
   }
 }

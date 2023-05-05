@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       mkdir($imagesFolder);
     }
 
-    $imageName = md5( uniqid(''));
-    move_uploaded_file($image['tmp_name'], $imagesFolder . $imageName . '.jpg');
+    $imageName = md5( uniqid('')) . '.jpg' ;
+    move_uploaded_file($image['tmp_name'], $imagesFolder . $imageName );
 
     $query = " INSERT INTO properties (title, prize, image, description, rooms, wc, parking, created) 
     VALUES ( '$title', '$prize', '$imageName', '$description', '$rooms', '$wc', '$parking', '$created');";
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_query($db, $query);
 
     if ($result) {
-       header('Location: /nihonstay_app/admin/index.php');
+       header('Location: /nihonstay_app/admin/index.php?result=1');
     }
   }
 }
