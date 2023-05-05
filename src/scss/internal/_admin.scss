@@ -1,0 +1,14 @@
+.alert {
+
+
+  &.error {
+    padding-left: 10px;
+    background-color: $pink;
+    border-left: 2rem solid $red;
+    opacity: 0.8;
+    font-weight: $bold;
+  }
+  &.error:first-of-type {
+    margin-top: 20px;
+  }
+}

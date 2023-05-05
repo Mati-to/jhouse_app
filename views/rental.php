@@ -6,9 +6,9 @@ addTemplate('header');
 <main class='container section content-center'>
   <h1>Big House in Kyoto with a Garden</h1>
 
-  <img src="../src/img/highlight1.jpg" alt="">
+  <img src='../src/img/highlight1.jpg' alt=''>
 
-  <div class="rental-text">
+  <div class='rental-text'>
     <p> <span class='prize'>$300</span> /per night</p>
     <ul class='icons-rent'>
       <li>
