@@ -8,6 +8,25 @@ $dbQueryResult = mysqli_query($db, $query);
 
 $getResult = $_GET['result'] ?? null;
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+  $id = $_POST['deleteId'];
+  $id = filter_var($id, FILTER_VALIDATE_INT);
+
+  if ($id) {
+    $deleteQuery = " SELECT image FROM properties WHERE id = $id ";
+    $deleteQueryResult = mysqli_query($db, $deleteQuery);
+    $property = mysqli_fetch_assoc($deleteQueryResult);
+    unlink('../images/' . $property['image']);
+
+    $deleteQuery = " DELETE FROM properties WHERE id = $id ";
+    $deleteQueryResult = mysqli_query( $db, $deleteQuery);
+
+    if ($deleteQueryResult) {
+      header('Location: /nihonstay_app/admin/index.php?result=3');
+    }
+  }
+}
+
 require '../includes/functions.php';
 addTemplate('header');
 ?>
@@ -15,7 +34,11 @@ addTemplate('header');
 <main class='container section'>
   <h1>Admin - Your Houses</h1>
   <?php if (intval($getResult) === 1) : ?>
-    <p class="alert success">Publication created successfully</p>
+    <p class="alert success">Publication Created Successfully</p>
+  <?php elseif (intval($getResult) === 2) : ?>
+    <p class="alert success">Publication Updated Successfully</p>
+  <?php elseif (intval($getResult) === 3) : ?>
+    <p class="alert success">Publication Deleted Successfully</p>
   <?php endif; ?>
 
   <a href='/nihonstay_app/admin/props/create.php' class="button green-button">New Property</a>
@@ -39,8 +62,11 @@ addTemplate('header');
           <td><img src="../images/<?php echo $property['image']; ?>" class="table-image"></td>
           <td> $ <?php echo $property['prize']; ?> </td>
           <td>
-            <a href="#" class="green-button-block">Edit</a>
-            <a href="#" class="red-button-block">Delete</a>
+            <a href="/nihonstay_app/admin/props/update.php?id=<?php echo $property['id']; ?>" class="green-button-block">Update</a>
+            <form method="POST" class="w-100">
+              <input type="hidden" name="deleteId" value="<?php echo $property['id']; ?>">
+              <input type="submit" class="red-button-block" value="Delete">
+            </form>
           </td>
         </tr>
       <?php endwhile; ?>

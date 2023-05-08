@@ -1,39 +1,58 @@
 <?php
 require '../includes/functions.php';
 addTemplate('header');
+
+$getId = $_GET['id'] ?? null;
+$getId = filter_var($getId, FILTER_VALIDATE_INT);
+
+if (!$getId) {
+  header('Location: /nihonstay_app/views/rentals.php');
+}
+
+require '../includes/config/database.php';
+$db = connectionDB();
+
+$query = " SELECT * FROM properties WHERE id = $getId ";
+$result = mysqli_query($db, $query);
+
+if (!$result->num_rows) {
+  header('Location: /nihonstay_app/views/rentals.php');
+}
+
+$property = mysqli_fetch_assoc($result);
+
 ?>
 
 <main class='container section content-center'>
-  <h1>Big House in Kyoto with a Garden</h1>
+  <h1><?php echo $property['title']; ?></h1>
 
-  <img src='../src/img/highlight1.jpg' alt=''>
+  <img src='../images/<?php echo $property['image']; ?>' alt='House for vacational rent'>
 
   <div class='rental-text'>
-    <p> <span class='prize'>$300</span> /per night</p>
+    <p> <span class='prize'>$<?php echo $property['prize']; ?></span> /per night</p>
     <ul class='icons-rent'>
       <li>
+        <img src='../src/img/icon_bedroom.svg' alt='bedroom icon' loading='lazy'>
+        <p><?php echo $property['rooms']; ?></p>
+      </li>
+      <li>
         <img src='../src/img/icon_wc.svg' alt='wc icon' loading='lazy'>
-        <p>2</p>
+        <p><?php echo $property['wc']; ?></p>
       </li>
       <li>
         <img src='../src/img/icon_parkinglot.svg' alt='parking lot icon' loading='lazy'>
-        <p>2</p>
-      </li>
-      <li>
-        <img src='../src/img/icon_bedroom.svg' alt='bedroom icon' loading='lazy'>
-        <p>4</p>
+        <p><?php echo $property['parking']; ?></p>
       </li>
     </ul>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas repellat ex maiores! Voluptatibus iusto
-      necessitatibus temporibus nulla quibusdam, enim accusantium sed aspernatur, non sapiente officia, ipsam
-      dignissimos nisi? Veniam, vero?</p>
+    <p><?php echo $property['description'] ?></p>
   </div>
 
 </main>
 
 
 <?php
+mysqli_close($db);
 
 include './templates/footer.php';
 ?>

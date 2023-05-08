@@ -8,7 +8,7 @@ application is developed in PHP, SASS, Javascript, Gulp and MySQL.
 - Create, Read, Update, Delete (CRUD): users can create and publish a house for rent, read information about available 
 vacation homes, update information about a house already published or delete a previously published house.
 - Search for a vacational house: users can search for available vacation homes in Japan.
-- Register and Login: users can register and log in to access the application's functionalities.
+- Login: users can ask for a user and then log in to access the application's functionalities.
 
 ## Stack 
 - HTML
