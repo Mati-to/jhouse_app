@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function deleteMessage() {
-  const messageConfirm = document.querySelector('.alert');
+  const messageConfirm = document.querySelector('.success');
   if (messageConfirm !== null) {
     setTimeout(function () {
       const parent = messageConfirm.parentElement;

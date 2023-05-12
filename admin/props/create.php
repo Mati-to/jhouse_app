@@ -1,4 +1,10 @@
 <?php
+require '../../includes/functions.php';
+$auth = isAuthenticated();
+
+if(!$auth) {
+  header('Location: /nihonstay_app/views/login.php');
+}
 
 require '../../includes/config/database.php';
 $db = connectionDB();
@@ -73,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-require '../../includes/functions.php';
 addTemplate('header');
 ?>
 
