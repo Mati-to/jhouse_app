@@ -1,4 +1,10 @@
 <?php
+require '../../includes/functions.php';
+$auth = isAuthenticated();
+
+if(!$auth) {
+  header('Location: /nihonstay_app/views/login.php');
+}
 
 $updateId = $_GET['id'];
 $updateId = filter_var($updateId, FILTER_VALIDATE_INT);
@@ -90,7 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
-require '../../includes/functions.php';
 addTemplate('header');
 ?>
 
