@@ -1,0 +1,19 @@
+{
+    "name": "matia/nihonstay_app",
+    "description": "My project using PHP and OOP",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Matías Alfaro",
+            "email": "matiasalfaro2.a@gmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "./classes"
+        }
+    }
+}

@@ -1,77 +1,46 @@
 <?php
-require '../../includes/functions.php';
-$auth = isAuthenticated();
+require '../../includes/app.php';
 
-if(!$auth) {
-  header('Location: /nihonstay_app/views/login.php');
-}
+use App\Property;
+use Intervention\Image\ImageManagerStatic as Image;
 
-require '../../includes/config/database.php';
+isAuthenticated();
+ 
 $db = connectionDB();
 
-$validation = [];
+$validation = Property::getValidation();
 
-$title = '';
-$prize = '';
-$description = '';
-$rooms = '';
-$wc = '';
-$parking = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  /* Creates a new instance of Property when the request 
+  method is POST */
+  $property = new Property($_POST);
 
-  $title = mysqli_real_escape_string( $db, $_POST['title']);
-  $prize = mysqli_real_escape_string( $db, $_POST['prize']);
-  $description = mysqli_real_escape_string( $db, $_POST['description']);
-  $rooms = mysqli_real_escape_string( $db, $_POST['rooms']);
-  $wc = mysqli_real_escape_string( $db, $_POST['wc']);
-  $parking = mysqli_real_escape_string( $db, $_POST['parking']);
-  $created = date('Y-m-d');
+  /* Creates a unique name for each image, then this reference
+  is stored in the DB */
+  $imageName = md5( uniqid('')) . '.jpg' ;
 
-  $image = $_FILES['image'];
-
-  if (!$title) {
-    $validation[] = 'You must provide a title';
-  }
-  if (!$prize) {
-    $validation[] = 'You must provide a prize';
-  }
-  if (!$description) {
-    $validation[] = 'You must provide a description';
-  }
-  if (!$rooms) {
-    $validation[] = 'You must provide a number of rooms availables';
-  }
-  if (!$wc) {
-    $validation[] = 'You must provide a number of bathrooms availables';
-  }
-  if (!$parking) {
-    $validation[] = 'You must provide a number of parking lots availables';
-  }
-  if (!$image['name'] || $image['error']) {
-    $validation[] = 'You must provide at least 1 picture of the house';
+  /* Validates if the image exists, then I resize the image 
+  given by the user, and then it sets the name 
+  reference of the image to the atribute on the class */
+  if($_FILES['image']['tmp_name']) {
+    $img = Image::make($_FILES['image']['tmp_name'])->fit(800, 600);
+    $property->setImage($imageName);
   }
 
-  // File maximum size: 1MB
-  $kbSize = 1000 * 1000;
-  if ($image['size'] > $kbSize) {
-    $validation[] = 'The maximum weight of the image is 100 Kb';
-  }
+  $validation = $property->validation();
 
   if (empty($validation)) {
 
-    $imagesFolder = '../../images/';
-    if(!is_dir($imagesFolder)) {
-      mkdir($imagesFolder);
+    if(!is_dir(IMAGES_FOLDER)) {
+      mkdir(IMAGES_FOLDER);
     }
 
-    $imageName = md5( uniqid('')) . '.jpg' ;
-    move_uploaded_file($image['tmp_name'], $imagesFolder . $imageName );
+    // Stores the img file in the Server
+    $img->save(IMAGES_FOLDER . $imageName);
 
-    $query = " INSERT INTO properties (title, prize, image, description, rooms, wc, parking, created) 
-    VALUES ( '$title', '$prize', '$imageName', '$description', '$rooms', '$wc', '$parking', '$created');";
-
-    $result = mysqli_query($db, $query);
+    // Save the object into the DB
+    $result = $property->save();
 
     if ($result) {
        header('Location: /nihonstay_app/admin/index.php?result=1');
