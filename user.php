@@ -1,5 +1,5 @@
 <?php
-require 'includes/config/database.php';
+require 'includes/app.php';
 $db = connectionDB();
 
 $email = 'email@example.com';

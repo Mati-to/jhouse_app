@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . '../../../includes/config/database.php';
 $db = connectionDB();
 
 $query = " SELECT * FROM properties LIMIT $limit ";

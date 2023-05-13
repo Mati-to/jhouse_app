@@ -1,5 +1,5 @@
 <?php
-require '../includes/functions.php';
+require '../includes/app.php';
 addTemplate('header');
 
 $getId = $_GET['id'] ?? null;
@@ -9,7 +9,6 @@ if (!$getId) {
   header('Location: /nihonstay_app/views/rentals.php');
 }
 
-require '../includes/config/database.php';
 $db = connectionDB();
 
 $query = " SELECT * FROM properties WHERE id = $getId ";
