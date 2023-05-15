@@ -9,7 +9,7 @@ function addTemplate(string $name, bool $main = false)
   include TEMPLATES_PATH . "/{$name}.php";
 }
 
-function isAuthenticated(): bool
+function isAuthenticated(): bool 
 {
   session_start(); 
   if (!$_SESSION['login']) {
@@ -24,4 +24,9 @@ function helper($variable)
   var_dump($variable);
   echo '</pre>';
   exit;
+}
+
+function sanitize($html): string | int {
+  $s = htmlspecialchars($html);
+  return $s;
 }
