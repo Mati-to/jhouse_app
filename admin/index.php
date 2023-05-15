@@ -1,13 +1,11 @@
 <?php
-require '../includes/functions.php';
-$auth = isAuthenticated();
+require '../includes/app.php';
+isAuthenticated();
 
-if(!$auth) {
-  header('Location: /nihonstay_app/views/login.php');
-}
+use App\Property;
 
-require '../includes/config/database.php';
-$db = connectionDB();
+// Method to bring the results of the DB using Active Record
+$properties = Property::getAll();
 
 $query = "SELECT * FROM properties";
 $dbQueryResult = mysqli_query($db, $query);
@@ -60,21 +58,21 @@ addTemplate('header');
     </thead>
 
     <tbody>
-      <?php while ($property = mysqli_fetch_assoc($dbQueryResult)) : ?>
+      <?php foreach( $properties as $property ) : ?>
         <tr>
-          <td> <?php echo $property['id']; ?> </td>
-          <td> <?php echo $property['title']; ?> </td>
-          <td><img src="../images/<?php echo $property['image']; ?>" class="table-image"></td>
-          <td> $ <?php echo $property['prize']; ?> </td>
+          <td> <?php echo $property->id; ?> </td>
+          <td> <?php echo $property->title; ?> </td>
+          <td><img src="../images/<?php echo $property->image; ?>" class="table-image"></td>
+          <td> $ <?php echo $property->prize; ?> </td>
           <td>
-            <a href="/nihonstay_app/admin/props/update.php?id=<?php echo $property['id']; ?>" class="green-button-block">Update</a>
+            <a href="/nihonstay_app/admin/props/update.php?id=<?php echo $property->id; ?>" class="green-button-block">Update</a>
             <form method="POST" class="w-100">
-              <input type="hidden" name="deleteId" value="<?php echo $property['id']; ?>">
+              <input type="hidden" name="deleteId" value="<?php echo $property->id; ?>">
               <input type="submit" class="red-button-block" value="Delete">
             </form>
           </td>
         </tr>
-      <?php endwhile; ?>
+      <?php endforeach; ?>
 
     </tbody>
   </table>

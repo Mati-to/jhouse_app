@@ -66,6 +66,13 @@ class Property
     return $data;
   }
 
+  public function setImage($image)
+  {
+    if ($image) {
+      $this->image = $image;
+    }
+  }
+
   public function dataSanitizer()
   {
     $data = $this->data();
@@ -77,14 +84,6 @@ class Property
     return $sanitized;
   }
 
-  public function setImage($image)
-  {
-    if ($image) {
-      $this->image = $image;
-    }
-  }
-
-  // Validation Method
   public static function getValidation()
   {
     return self::$validation;
@@ -114,5 +113,38 @@ class Property
       self::$validation[] = 'You must provide at least 1 picture of the house';
     }
     return self::$validation;
+  }
+
+  public static function getAll()
+  {
+    $query = " SELECT * FROM properties ";
+
+    $result = self::sqlQuery($query);
+    return $result;
+  }
+
+  public static function sqlQuery($query)
+  {
+    $result = self::$db->query($query);
+
+    $array = [];
+    while ($register = $result->fetch_assoc()) {
+      $array[] = self::createObject($register);
+    }
+
+    $result->free();
+    return $array;
+  }
+
+  protected static function createObject($register)
+  {
+    $object = new self;
+
+    foreach ($register as $key => $value) {
+      if (property_exists($object, $key)) {
+        $object->$key = $value;
+      }
+    }
+    return $object;
   }
 }
