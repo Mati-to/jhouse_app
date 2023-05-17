@@ -31,7 +31,7 @@ class Property
 
   public function __construct($arg = [])
   {
-    $this->id = $arg['id'] ?? '';
+    $this->id = $arg['id'] ?? null;
     $this->title = $arg['title'] ?? '';
     $this->prize = $arg['prize'] ?? '';
     $this->image = $arg['image'] ?? '';
@@ -44,6 +44,15 @@ class Property
 
   public function save()
   {
+    if (!is_null($this->id)) {
+      $this->saveUpdate();
+    } else {
+      $this->saveCreate();
+    }
+  }
+
+  public function saveCreate()
+  {
     $data = $this->dataSanitizer();
 
     $query = " INSERT INTO properties ( ";
@@ -53,7 +62,42 @@ class Property
     $query .= "')";
 
     $result = self::$db->query($query);
-    return $result;
+
+    if ($result) {
+      header('Location: /nihonstay_app/admin/index.php?result=1');
+    }
+  }
+
+  public function saveUpdate()
+  {
+    $data = $this->dataSanitizer();
+
+    $values = [];
+    foreach ($data as $key => $value) {
+      $values[] = "{$key} = '{$value}'";
+    }
+
+    $query = " UPDATE properties SET ";
+    $query .= join(', ', $values);
+    $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "'";
+    $query .= " LIMIT 1 ";
+
+    $result = self::$db->query($query);
+
+    if ($result) {
+      header('Location: /nihonstay_app/admin/index.php?result=2');
+    }
+  }
+
+  public function delete()
+  {
+    $query = " DELETE FROM properties WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
+    $result = self::$db->query($query);
+
+    if ($result) {
+      $this->deleteImage();
+      header('Location: /nihonstay_app/admin/index.php?result=3');
+    }
   }
 
   public function data()
@@ -68,8 +112,22 @@ class Property
 
   public function setImage($image)
   {
+    // Deletes the previous image 
+    if (!is_null($this->id)) {
+      $this->deleteImage();
+    }
+
+    // Set the new image on the Object
     if ($image) {
       $this->image = $image;
+    }
+  }
+
+  public function deleteImage()
+  {
+    $file = file_exists(IMAGES_FOLDER . $this->image);
+    if ($file) {
+      unlink(IMAGES_FOLDER . $this->image);
     }
   }
 
@@ -123,6 +181,13 @@ class Property
     return $result;
   }
 
+  public static function getById($id)
+  {
+    $query = " SELECT * FROM properties WHERE id = {$id} ";
+    $result = self::sqlQuery($query);
+    return array_shift($result);
+  }
+
   public static function sqlQuery($query)
   {
     $result = self::$db->query($query);
@@ -146,5 +211,16 @@ class Property
       }
     }
     return $object;
+  }
+
+  /* Synchronizes the changes made by the user in the update page and the 
+  object properties */
+  public function sync($arr = [])
+  {
+    foreach ($arr as $key => $value) {
+      if (property_exists($this, $key) && !is_null($value)) {
+        $this->$key = $value;
+      }
+    }
   }
 }
