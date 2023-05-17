@@ -14,7 +14,7 @@ $validation = Property::getValidation();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   /* Creates a new instance of Property when the request 
   method is POST */
-  $property = new Property($_POST);
+  $property = new Property($_POST['property']);
 
   /* Creates a unique name for each image, then this reference
   is stored in the DB */
@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   /* Validates if the image exists, then I resize the image 
   given by the user, and then it sets the name 
   reference of the image to the atribute on the class */
-  if($_FILES['image']['tmp_name']) {
-    $img = Image::make($_FILES['image']['tmp_name'])->fit(800, 600);
+  if($_FILES['property']['tmp_name']['image']) {
+    $img = Image::make($_FILES['property']['tmp_name']['image'])->fit(800, 600);
     $property->setImage($imageName);
   }
 
@@ -40,11 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $img->save(IMAGES_FOLDER . $imageName);
 
     // Save the object into the DB
-    $result = $property->save();
-
-    if ($result) {
-       header('Location: /nihonstay_app/admin/index.php?result=1');
-    }
+    $property->saveCreate();
   }
 }
 

@@ -12,22 +12,14 @@ $dbQueryResult = mysqli_query($db, $query);
 
 $getResult = $_GET['result'] ?? null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $id = $_POST['deleteId'];
   $id = filter_var($id, FILTER_VALIDATE_INT);
 
   if ($id) {
-    $deleteQuery = " SELECT image FROM properties WHERE id = $id ";
-    $deleteQueryResult = mysqli_query($db, $deleteQuery);
-    $property = mysqli_fetch_assoc($deleteQueryResult);
-    unlink('../images/' . $property['image']);
 
-    $deleteQuery = " DELETE FROM properties WHERE id = $id ";
-    $deleteQueryResult = mysqli_query( $db, $deleteQuery);
-
-    if ($deleteQueryResult) {
-      header('Location: /nihonstay_app/admin/index.php?result=3');
-    }
+    $property = Property::getById($id);
+    $property->delete();
   }
 }
 
@@ -58,7 +50,7 @@ addTemplate('header');
     </thead>
 
     <tbody>
-      <?php foreach( $properties as $property ) : ?>
+      <?php foreach ($properties as $property) : ?>
         <tr>
           <td> <?php echo $property->id; ?> </td>
           <td> <?php echo $property->title; ?> </td>
