@@ -2,20 +2,22 @@
 require '../../includes/app.php';
 
 use App\Property;
+use App\Landlord;
 use Intervention\Image\ImageManagerStatic as Image;
 
 isAuthenticated();
 
 $id = $_GET['id'];
-$id = filter_var($id, FILTER_VALIDATE_INT);
-
-if (!$id) {
-  header('Location: /nihonstay_app/admin/index.php');
-}
+idVerifier($id);
 
 $property = Property::getById($id);
+$landlords = Landlord::getAll();
 $validation = Property::getValidation();
 
+// Verify any changes in the ID of the Query String
+if($id !== $property->id) {
+  header('Location: /nihonstay_app/admin/index.php');
+}
  
 if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
 
@@ -33,12 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imageName = $property->image;
   }
 
-
   if (empty($validation)) {
-    if($img) {
+    if($_FILES['property']['tmp_name']['image']) {
       $img->save(IMAGES_FOLDER . $imageName);
     }
-    
     $property->save();
   }
 }
@@ -60,7 +60,7 @@ addTemplate('header');
   <form class="form" method="POST" enctype="multipart/form-data">
     <?php include '../../views/templates/form_props.php' ?>
 
-    <input type="submit" value="Update House" class="button green-button">
+    <input type="submit" value="Save Changes" class="button green-button">
   </form>
 
 </main>
