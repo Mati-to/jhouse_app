@@ -9,7 +9,7 @@
 
   <label for="image">Image: </label>
   <input type="file" name="property[image]" id="image" accept="image/jpeg, image/png">
-  <?php if($property->image) { ?>
+  <?php if ($property->image) { ?>
     <img src="../../images/<?php echo $property->image ?>" class="small-image" alt="">
   <?php } ?>
 
@@ -28,4 +28,20 @@
 
   <label for="parking">Parking lots: </label>
   <input type="number" name="property[parking]" id="parking" value="<?php echo sanitize($property->parking); ?>" placeholder="For example: 1" min='0' max='8'>
+</fieldset>
+
+<fieldset>
+  <legend>Landlord</legend>
+
+  <label for="landlord">Landlord:</label>
+  <select name="property[landlords_id]" id="landlord">
+    <option selected value="">-- Select --</option>
+    <?php foreach ($landlords as $landlord) { ?>
+      <option
+        <?php echo $property->landlords_id === $landlord->id ? 'selected' : '';  ?>
+        value="<?php echo sanitize($landlord->id); ?>">
+        <?php echo sanitize($landlord->firstname) . " " . sanitize($landlord->lastname); ?>
+      </option>
+    <?php } ?>
+  </select>
 </fieldset>

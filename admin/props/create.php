@@ -2,14 +2,17 @@
 require '../../includes/app.php';
 
 use App\Property;
+use App\Landlord;
 use Intervention\Image\ImageManagerStatic as Image;
 
 isAuthenticated();
- 
-$db = connectionDB();
+
+$property = new Property;
+
+$landlords = Landlord::getAll();
+
 
 $validation = Property::getValidation();
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   /* Creates a new instance of Property when the request 
@@ -40,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $img->save(IMAGES_FOLDER . $imageName);
 
     // Save the object into the DB
-    $property->saveCreate();
+    $property->save();
   }
 }
 
@@ -48,7 +51,7 @@ addTemplate('header');
 ?>
 
 <main class='container section'>
-  <h1>Create</h1>
+  <h1>Create Property</h1>
 
   <a href='/nihonstay_app/admin/index.php' class="button green-button">Back</a>
 
@@ -61,7 +64,7 @@ addTemplate('header');
   <form class="form" method="POST" enctype="multipart/form-data" action="/nihonstay_app/admin/props/create.php">
     <?php include '../../views/templates/form_props.php'; ?>
 
-    <input type="submit" value="Add House" class="button green-button"> 
+    <input type="submit" value="Register Landlord" class="button green-button"> 
   </form>
 
 </main>

@@ -7,7 +7,6 @@ addTemplate('header');
   <h1>Rentals</h1>
 
   <?php
-    $limit = 10;
     include 'templates/properties.php';    
   ?>
   
@@ -15,5 +14,5 @@ addTemplate('header');
 
 <?php
 
-include './templates/footer.php';
+addTemplate('footer');
 ?>

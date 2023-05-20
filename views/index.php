@@ -32,7 +32,6 @@ addTemplate('header', $main = true);
   <h1>Some of our Houses</h1>
 
   <?php 
-    $limit = 3;
     include 'templates/properties.php';
   ?>
 
